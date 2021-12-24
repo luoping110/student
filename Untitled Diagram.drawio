@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-12-23T09:01:47.269Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="VbCuQbkawFmfywsGRcdV" version="16.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-24T01:17:39.074Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="QnGnxnfLZWS9usO0ggn6" version="16.0.3" type="github">
   <diagram name="Page-1" id="0783ab3e-0a74-02c8-0abd-f7b4e66b4bec">
-    <mxGraphModel dx="1278" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="881" dy="377" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -22,23 +22,14 @@
             <mxPoint x="350" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="sAEYUaIDBaoiIXqcAe7F-12" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="140" y="150" as="sourcePoint" />
-            <mxPoint x="690" y="150" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="sAEYUaIDBaoiIXqcAe7F-16" value="通过定时任务去搜索操作表(perf_outer_orders_operate)待下行&#xa;(参数检查状态为通过,下行状态默认为0,发货状态为未发货)的订单,根据订单号(perf_order_no)&#xa;去查询订单(perf_outer_orders)和商品行(perf_outer_order_items)信息" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
-          <mxGeometry x="180" y="100" width="520" height="90" as="geometry" />
-        </mxCell>
         <mxCell id="sAEYUaIDBaoiIXqcAe7F-17" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="160" y="400" as="sourcePoint" />
             <mxPoint x="680" y="400.0000000000001" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="sAEYUaIDBaoiIXqcAe7F-19" value="&#xa;下行成功的订单则更新操作表下行状态(down_status=1),&#xa;失败则将失败信息记录,下行状态更改为(down_status=3),记录失败时间以及次数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
-          <mxGeometry x="200" y="340" width="490" height="90" as="geometry" />
+        <mxCell id="sAEYUaIDBaoiIXqcAe7F-19" value="&#xa;成功的订单则更新操作表活动状态(down_status=1)并且将交易订单号、交易商品行号分别塞入订单&#xa;(perf_outer_orders)和商品行(perf_outer_order_items)，失败将则失败的信息记录，&#xa;状态更改为( down_status=3)，记录失败的时间以及次数" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
+          <mxGeometry x="160" y="330" width="530" height="90" as="geometry" />
         </mxCell>
         <mxCell id="sAEYUaIDBaoiIXqcAe7F-20" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -51,7 +42,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="sAEYUaIDBaoiIXqcAe7F-21" value="将返回的&#xa;订单和商&#xa;品行信息&#xa;通过调用&#xa;下行接口&#xa;下行到交&#xa;易域" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
-          <mxGeometry x="50" y="190" width="60" height="120" as="geometry" />
+          <mxGeometry x="50" y="190" width="60" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="sAEYUaIDBaoiIXqcAe7F-22" value="订单下行" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
+          <mxGeometry x="50" y="10" width="100" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sAEYUaIDBaoiIXqcAe7F-16" value="通过定时任务去搜索操作表（perf_outer_orders_operate）查询&#xa;（检查状态为通过，过期状态为0，执行状态为未执行）的订单，根据订单号（perf_order_no）&#xa;去查询订单（perf_outer_orders）和商品行（perf_outer_order_items）信息" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
+          <mxGeometry x="160" y="90" width="550" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sAEYUaIDBaoiIXqcAe7F-24" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="150" as="sourcePoint" />
+            <mxPoint x="690" y="150" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
